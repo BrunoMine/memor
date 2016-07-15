@@ -8,7 +8,7 @@
 
 
 -- Montar banco de dados em um mod
-function memor.montar(mod)
+function memor.montar_bd(mod)
 	v = {}
 	v.mod = mod
 	
