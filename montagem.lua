@@ -10,7 +10,7 @@
 -- Montar banco de dados em um mod
 function memor.montar_bd(mod)
 	v = {}
-	v.mod = mod
+	v.mod = mod or minetest.get_current_modname()
 	
 	-- Inserir dados
 	v.salvar = function(v, tb, index, valor)
