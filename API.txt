@@ -24,6 +24,15 @@ Chamadas de função para o banco de dados criado
 	
 		<tb> é o nome da tabela (exemplo: players, nodes, casas)
 		<index> é o endereço do valor (exemplo: fome, altura, dono)
+		
+	remover(tb, index) -- Remove um valor da tabela (apaga o dado armazenado)
+	
+		<tb> é o nome da tabela (exemplo: players, nodes, casas)
+		<index> é o endereço do valor (exemplo: fome, altura, dono)
+		
+	drop_tb(tb) -- Remove uma tabela (apagando todos os seus dados)
+	
+		<tb> é o nome da tabela (exemplo: players, nodes, casas)
 	
 Exemplo de uso:
 
@@ -38,10 +47,16 @@ if registro:verif("medalhas", "Maria") then
 
 	-- Consulta quantas "medalhas" "Maria" tem
 	local medalhas = registro:pegar("medalhas", "Maria") -- retorna 15
-	
+
 	minetest.chat_send_all("Maria tem " .. medalhas .. " medalhas")
-	
+
 end
+
+-- Remover "Maria" da tabela "medalhas"
+registro:remover("medalhas", "Maria")
+
+-- Remove a tabela "medalhas"
+registro:drop_tb("medalhas")
 
 =========================================================================================================
 

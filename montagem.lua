@@ -27,5 +27,15 @@ function memor.montar_bd(mod)
 		return memor.verificar(v.mod, tb, index)
 	end
 	
+	-- Remover dados
+	v.remover = function(v, tb, index)
+		return memor.deletar(v.mod, tb, index)
+	end
+	
+	-- Remover tabela
+	v.drop_tb = function(v, tb)
+		return memor.deletar_dir(v.mod, tb)
+	end
+	
 	return v
 end

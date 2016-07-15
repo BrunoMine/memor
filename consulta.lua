@@ -13,7 +13,7 @@ verificar = function(dir, subdir)
 	-- Verifica e corrige diretorio
 	local list = minetest.get_dir_list(minetest.get_worldpath(), true)
 	local r = false
-	for ndir, v in pairs(list) do
+	for n, ndir in ipairs(list) do
 		if ndir == dir then
 			r = true
 			break
@@ -27,7 +27,7 @@ verificar = function(dir, subdir)
 	-- Verifica e corrige subdiretorio
 	list = minetest.get_dir_list(minetest.get_worldpath().."/"..dir, true)
 	r = false
-	for ndir, v in pairs(list) do
+	for n, ndir in ipairs(list) do
 		if ndir == subdir then
 			r = true
 			break
@@ -75,9 +75,17 @@ end
 
 -- Verificar dados
 memor.verificar = function(dir, subdir, arquivo)
-	local leitura = io.open(wpath .. "/" .. dir .. "/" .. subdir .. "/" .. arquivo, "w")
-	if leitura then
-		io.close(leitura)
+
+	list = minetest.get_dir_list(wpath .. "/" .. dir .. "/" .. subdir)
+	r = false
+	for n, arq in ipairs(list) do
+		if arq == arquivo then
+			r = true
+			break
+		end
+	end
+	
+	if r then
 		return true
 	else 
 		return false
