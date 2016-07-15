@@ -3,7 +3,7 @@
 ===================================> Montar um banco de dados rápido <===================================
 
 memor.montar_bd(<nome do mod>) -- Função que retorna uma tabela de funções para gerenciar o banco de 
-							dados do mod
+					dados do mod
 
 	 <nome do mod> OPCIONAL é o nome do mod que usará o banco de dados 
 	 		Se nulo, fica sendo o nome do mod que executar a função
@@ -64,9 +64,9 @@ registro:drop_tb("medalhas")
 =====================================> Tabela de jogadores online <======================================
 
 memor.online(<nome do mod>) -- Retorna uma tabela desordenada com índices com nomes dos jogadores online
-							^ A tabela só mantém dados dos índices de jogadores online
-							^ Caso um nome de jogador que não esteja online for inserido, ele vai 
-								ser apagado assim que algum jogador sair do servidor
+				^ A tabela só mantém dados dos índices de jogadores online
+				^ Caso um nome de jogador que não esteja online for inserido, ele vai 
+					ser apagado assim que algum jogador sair do servidor
 
 	<nome do mod> OPCIONAL é uma string com o nome do mod dono da tabela (o que opera a tabela)
 	 		Se nulo, fica sendo o nome do mod que executar a função
