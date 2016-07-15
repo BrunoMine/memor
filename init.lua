@@ -21,5 +21,6 @@ notificar("Carregando scripts...")
 dofile(modpath.."/arquivo.lua")
 dofile(modpath.."/consulta.lua")
 dofile(modpath.."/montagem.lua")
+dofile(modpath.."/online.lua")
 notificar("OK")
 
