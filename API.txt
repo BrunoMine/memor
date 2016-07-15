@@ -5,7 +5,8 @@
 memor.montar_bd(<nome do mod>) -- Função que retorna uma tabela de funções para gerenciar o banco de 
 							dados do mod
 
-	 <nome do mod> é o nome do mod que usará o banco de dados (exemplo: minetest.get_current_modname())
+	 <nome do mod> OPCIONAL é o nome do mod que usará o banco de dados 
+	 		Se nulo, fica sendo o nome do mod que executar a função
 
 Chamadas de função para o banco de dados criado
 
