@@ -1,6 +1,8 @@
 #API do Memor
 
 ===================================> Montar um banco de dados rápido <===================================
+Esse banco de dados fica em uma subpasta com o nome do mod especificado portanto não deve existir nenhum 
+arquivo ou pasta com o nome do mod dentro da pasta do mundo pois isso ocasionaria um conflito de nomes
 
 memor.montar_bd(<nome do mod>) -- Função que retorna uma tabela de funções para gerenciar o banco de 
 							dados do mod
