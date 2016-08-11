@@ -1,10 +1,13 @@
---
--- Mod Memor
---
--- Montagem de banco de dados
---
-
-
+--[[
+	Mod Memor para Minetest
+	Memor v1.1 Copyright (C) 2016 BrunoMine (https://github.com/BrunoMine)
+	
+	Recebeste uma cópia da GNU Lesser General
+	Public License junto com esse software,
+	se não, veja em <http://www.gnu.org/licenses/>. 
+	
+	Montagem de bando de dados
+  ]]
 
 
 -- Montar banco de dados em um mod

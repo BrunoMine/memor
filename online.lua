@@ -1,8 +1,14 @@
---
--- Mod Memor
---
--- Controle de jogadores online
---
+--[[
+	Mod Memor para Minetest
+	Memor v1.1 Copyright (C) 2016 BrunoMine (https://github.com/BrunoMine)
+	
+	Recebeste uma cópia da GNU Lesser General
+	Public License junto com esse software,
+	se não, veja em <http://www.gnu.org/licenses/>. 
+	
+	Controle de jogadores online
+  ]]
+
 
 -- Controle de jogadores de cada mod
 memor.online_mods = {}
