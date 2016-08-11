@@ -40,5 +40,10 @@ function memor.montar_bd(mod)
 		return memor.deletar_dir(v.mod, tb)
 	end
 	
+	-- Listar dados
+	v.listar = function(v, tb)
+		return memor.listar(v.mod, tb)
+	end
+	
 	return v
 end

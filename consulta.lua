@@ -96,5 +96,34 @@ memor.verificar = function(dir, subdir, arquivo)
 	end
 end
 
+-- Listar
+memor.listar = function(dir, subdir)
+        if dir == nil then 
+                minetest.log("error", "[Memor] Diretorio inexistente (em memor.listar)")
+                return false
+        end
+        
+        if subdir then
+        
+                local list = minetest.get_dir_list(wpath .. "/" .. dir .. "/" .. subdir)
+                
+                if list == nil then
+                        minetest.log("error", "[Memor] Impossivel listar diretorio (em memor.listar)")
+                        return false
+                else
+                        return list
+                end
+	
+	else
+	        local list = minetest.get_dir_list(wpath .. "/" .. dir)
+                
+                if list == nil then
+                        minetest.log("error", "[Memor] Impossivel listar diretorio (em memor.listar)")
+                        return false
+                else
+                        return list
+                end
+	end
+end
 
 

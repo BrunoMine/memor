@@ -43,6 +43,11 @@ Chamadas de função para o banco de dados criado
 	drop_tb(tb) -- Remove uma tabela (apagando todos os seus dados)
 	
 		<tb> é o nome da tabela (exemplo: players, nodes, casas)
+		
+	listar(tb) -- Retorna uma tabela ordenada com strings dos nomes de tabelas ou indices
+		
+		<tb> OPICIONAL é uma tabela a qual desejar listar os sues indices
+		        ^ Se nulo, retorna as listagem das tabelas do banco de dados
 	
 Exemplo de uso:
 
