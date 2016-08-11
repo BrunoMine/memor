@@ -1,5 +1,5 @@
 Mod Memor para Minetest
-Memor v1.1 Copyright (C) 2016 BrunoMine (https://github.com/BrunoMine)
+Memor v1.2 Copyright (C) 2016 BrunoMine (https://github.com/BrunoMine)
 
 Recebeste uma cópia da GNU Lesser General
 Public License junto com esse software,
