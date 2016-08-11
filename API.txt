@@ -18,7 +18,7 @@ Chamadas de função para o banco de dados criado
 		<index> é o endereço do valor (exemplo: fome, altura, dono)
 		<valor> é o valor armazenado (exemplo: 6, 30, "Caio")
 
-	pegar(index, valor) -- Retorna o valor armazenado
+	pegar(index, valor) -- Retorna o valor armazenado (ou nulo caso seja inexistente)
 	
 		<tb> é o nome da tabela (exemplo: players, nodes, casas)
 		<index> é o endereço do valor (exemplo: fome, altura, dono)

@@ -45,7 +45,7 @@ end
 memor.inserir = function(mod, tb, index, valor)
 
 	-- Tenta inserir direto
-	if memor.escrever(mod, tb, index, valor) then return true end
+	if memor.escrever(mod, tb, index, valor) == true then return true end
 	
 	verificar(mod, tb)
 	
@@ -63,12 +63,11 @@ end
 memor.consultar = function(mod, tb, index)
 	
 	local r = memor.ler(mod, tb, index)
-	if r then 
-		return r
-	else 
+	if r == nil then 
 		minetest.log("error", "[Memor] Registro acessado inexistente ("..dump(mod).."/"..dump(tb).."/"..dump(index)..") (em memor.consultar)")
-		return false
 	end
+	
+	return r
 	
 end
 

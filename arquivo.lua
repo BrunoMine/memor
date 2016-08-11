@@ -26,7 +26,7 @@ end
 
 -- Criar um arquivo com os dados serializados (Salvar)
 function memor.escrever(mod, dir, arquivo, dados)
-	if not mod or not dir or not arquivo or not dados then 
+	if mod == nil or dir == nil or arquivo == nil or dados == nil then 
 		minetest.log("error", "[Memor] Faltou dados (em memor.escrever)")
 		return false 
 	end
@@ -50,22 +50,22 @@ end
 
 -- Ler dados de um arquivo de memória (Carregar)
 function memor.ler(mod, dir, arquivo) 
-	if not mod or not dir or not arquivo then 
+	if mod == nil or dir == nil or arquivo == nil then 
 		minetest.log("error", "[Memor] Faltou dados (em memor.ler)") 
-		return false 
+		return nil
 	end
 	
 	local entrada = io.open(wpath .. "/" .. mod .. "/" .. dir .. "/" .. arquivo, "r")
 	if entrada then
 		local dados = entrada:read("*l")
-		if dados ~= "" and dados ~= nil then
+		if dados ~= "" or dados ~= nil then
 			dados = minetest.deserialize(dados)
 		end
 		io.close(entrada)
 		return dados
 	else
 		minetest.log("error", "[Memor] pasta e/ou arquivo inexiste(s) (em memor.ler)")
-		return false
+		return nil
 	end
 end
 
