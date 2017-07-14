@@ -34,7 +34,7 @@ local bd = dofile(minetest.get_modpath("my_modname").."/lib/memor.lua")
 ```
 
 ### Métodos de operação
-
+```txt
 `salvar(itb, iv, v)` : Armazena um valor no banco de dados
 `pegar(itb, iv)` : Pega o valor armazenado
 `verif(itb, iv)` : Verifica se um valor existe
@@ -42,12 +42,12 @@ local bd = dofile(minetest.get_modpath("my_modname").."/lib/memor.lua")
 `drop_tb(itb)` : Remove uma tabela
 `listar(itb)` : Retorna uma tabela ordenada com os índices dos valores de uma tabela
 	^ Se `itb` for nulo, retorna os índices das tabelas
-
+```
 
 Para todos os métodos explicados aqui:
-	`itb` é uma string do índice da tabela no banco de dados
-	`iv` é a string do índice do valor
-	`v` é o valor no banco de dados (numerico, texto ou tabela)
+* `itb` é uma string do índice da tabela no banco de dados
+* `iv` é a string do índice do valor
+* `v` é o valor no banco de dados (numerico, texto ou tabela)
 
 ### Exemplo de código
 ```lua
