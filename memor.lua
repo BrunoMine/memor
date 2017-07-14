@@ -1,6 +1,6 @@
 --[[
 	Lib Memor para Minetest
-	Memor v2.0 Copyright (C) 2017 BrunoMine (https://github.com/BrunoMine)
+	Memor v2.0.0 Copyright (C) 2017 BrunoMine (https://github.com/BrunoMine)
 	
 	Recebeste uma cópia da GNU Lesser General
 	Public License junto com esse software,
