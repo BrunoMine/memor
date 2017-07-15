@@ -1,13 +1,12 @@
 --[[
 	Lib Memor para Minetest
-	Memor v2.0.0 Copyright (C) 2017 BrunoMine (https://github.com/BrunoMine)
+	Memor v1.3 Copyright (C) 2017 BrunoMine (https://github.com/BrunoMine)
 	
 	Recebeste uma cópia da GNU Lesser General
 	Public License junto com esse software,
 	se não, veja em <http://www.gnu.org/licenses/>. 
 	
-	Autoria do código:
-	Originalmente por BrunoMine, Bruno Borges <borgesdossantosbruno@gmail.com>
+	Inicializador de scripts
   ]]
   
 local modname = minetest.get_current_modname()
@@ -15,7 +14,7 @@ local modname = minetest.get_current_modname()
 local modpath = minetest.get_modpath(modname)
 
 -- Variavel global
-memor = {}
+local memor = {}
 
 -- Rotinas de interação com arquivos
 
