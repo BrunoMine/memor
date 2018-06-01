@@ -1,12 +1,12 @@
 --[[
 	Lib Memor para Minetest
-	Memor v1.3 Copyright (C) 2017 BrunoMine (https://github.com/BrunoMine)
+	Memor v1.3 Copyright (C) 2018 BrunoMine (https://github.com/BrunoMine)
 	
 	Recebeste uma cópia da GNU Lesser General
 	Public License junto com esse software,
 	se não, veja em <http://www.gnu.org/licenses/>. 
 	
-	Inicializador de scripts
+	Script para manipulação simples de banco de dados de um mod
   ]]
   
 local modname = minetest.get_current_modname()
@@ -39,19 +39,22 @@ function memor.mkdir(dir)
 end
 
 -- Criar um arquivo com os dados serializados (Salvar)
-function memor.escrever(dir, arquivo, dados)
+function memor.escrever(dir, arquivo, dados, is_text)
 	
 	if dir == nil or arquivo == nil or dados == nil then 
 		minetest.log("error", "[Memor] Faltou dados (em memor.escrever)")
 		return false 
 	end
 	
-	local dados = minetest.serialize(dados)
+	if is_text ~= true then
+		dados = minetest.serialize(dados)
+	else
+		dados = string.format(dados)
+	end
 	if dados == "" then
 		minetest.log("error", "[Memor] Dado fornecido invalido (em memor.escrever)")
 		return false
 	end
-	
 	local saida = io.open(wpath .. "/" .. modname .. "/" .. dir .. "/" .. arquivo, "w")
 	if saida then
 		saida:write(dados)
@@ -72,7 +75,7 @@ function memor.escrever(dir, arquivo, dados)
 end
 
 -- Ler dados de um arquivo de memória (Carregar)
-function memor.ler(dir, arquivo) 
+function memor.ler(dir, arquivo, is_text) 
 	
 	if dir == nil or arquivo == nil then 
 		minetest.log("error", "[Memor] Faltou dados (em memor.ler)") 
@@ -80,10 +83,14 @@ function memor.ler(dir, arquivo)
 	end
 	
 	local entrada = io.open(wpath .. "/" .. modname .. "/" .. dir .. "/" .. arquivo, "r")
-	if entrada then
-		local dados = entrada:read("*l")
-		if dados ~= "" or dados ~= nil then
+	if entrada ~= nil then
+		local dados
+		if is_text ~= true then
+			dados = entrada:read("*l")
 			dados = minetest.deserialize(dados)
+		else
+			dados = entrada:read("*a")
+			dados = dados
 		end
 		io.close(entrada)
 		return dados
@@ -147,8 +154,8 @@ verificar = function(subdir)
 	end
 	
 	-- Verifica e corrige subdiretorio
-	list = minetest.get_dir_list(minetest.get_worldpath().."/"..modname, true)
-	r = false
+	local list = minetest.get_dir_list(minetest.get_worldpath().."/"..modname, true)
+	local r = false
 	for n, ndir in ipairs(list) do
 		if ndir == subdir then
 			r = true
@@ -164,14 +171,14 @@ end
 
 
 -- Inserir dados
-memor.inserir = function(tb, index, valor)
+memor.inserir = function(tb, index, valor, is_text)
 	
 	-- Tenta inserir direto
-	if memor.escrever(tb, index, valor) == true then return true end
+	if memor.escrever(tb, index, valor, is_text) == true then return true end
 	
 	verificar(tb)
 	
-	if memor.escrever(tb, index, valor) then 
+	if memor.escrever(tb, index, valor, is_text) then 
 		return true 
 	else
 		minetest.log("error", "[Memor] Impossivel salvar dados (em memor.inserir)")
@@ -182,9 +189,9 @@ end
 
 
 -- Ler dados
-memor.consultar = function(tb, index)
+memor.consultar = function(tb, index, is_text)
 	
-	local r = memor.ler(tb, index)
+	local r = memor.ler(tb, index, is_text)
 	if r == nil then 
 		local mod = modname
 		minetest.log("error", "[Memor] Registro acessado inexistente ("..dump(mod).."/"..dump(tb).."/"..dump(index)..") (em memor.consultar)")
@@ -200,8 +207,8 @@ memor.verificar = function(subdir, arquivo)
 	
 	local dir = modname
 	
-	list = minetest.get_dir_list(wpath .. "/" .. dir .. "/" .. subdir)
-	r = false
+	local list = minetest.get_dir_list(wpath .. "/" .. dir .. "/" .. subdir)
+	local r = false
 	for n, arq in ipairs(list) do
 		if arq == arquivo then
 			r = true
@@ -250,14 +257,24 @@ end
 
 bd = {}
 
--- Inserir dados
+-- Inserir dados comuns
 bd.salvar = function(tb, index, valor)
 	return memor.inserir(tb, index, valor)
+end
+
+-- Inserir textos complexos
+bd.salvar_texto = function(tb, index, valor)
+	return memor.inserir(tb, index, valor, true)
 end
 
 -- Consultar dados
 bd.pegar = function(tb, index)
 	return memor.consultar(tb, index)
+end
+
+-- Inserir dados
+bd.pegar_texto = function(tb, index, valor)
+	return memor.consultar(tb, index, true)
 end
 
 -- Verificar dados
