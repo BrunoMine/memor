@@ -1,4 +1,4 @@
-# MultiChat v2.0.0
+# Memor v2.1.0
 
 ## Descrição
 
@@ -35,8 +35,10 @@ local bd = dofile(minetest.get_modpath("my_modname").."/lib/memor.lua")
 
 ### Métodos de operação
 ```txt
-`salvar(itb, iv, v)` : Armazena um valor no banco de dados
-`pegar(itb, iv)` : Pega o valor armazenado
+`salvar(itb, iv, v)` : Armazena um valor no banco de dados (valor não pode ter textos complexos)
+`salvar_texto(itb, iv, v)` : Armazena uma string de texto complexo (com caracteres especiais) no banco de dados
+`pegar(itb, iv)` : Pega o valor armazenado (valor não pode ter textos complexos)
+`pegar_texto(itb, iv)` : Pega string de texto complexo (com caracteres especiais) armazenada
 `verif(itb, iv)` : Verifica se um valor existe
 `remover(itb, iv)` : Remove um valor da tabela
 `drop_tb(itb)` : Remove uma tabela
@@ -47,7 +49,7 @@ local bd = dofile(minetest.get_modpath("my_modname").."/lib/memor.lua")
 Para todos os métodos explicados aqui:
 * `itb` é uma string do índice da tabela no banco de dados
 * `iv` é a string do índice do valor
-* `v` é o valor no banco de dados (numerico, texto ou tabela)
+* `v` é o valor no banco de dados (numerico, texto simples ou tabela)
 
 ### Exemplo de código
 ```lua
