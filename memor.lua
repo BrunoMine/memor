@@ -136,7 +136,7 @@ end
 -- Rotinas de consutas a arquivos
 
 -- Verifica diretorios e corrige
-verificar = function(subdir)
+local verificar = function(subdir)
 	
 	
 	-- Verifica e corrige diretorio
